@@ -1,0 +1,335 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}<title>home</title> {% endblock %}
+
+{% block content %}
+
+<!-- ======= Intro Section ======= -->
+  <div id="home" class="intro route bg-image" style="background-image: url({% static "blog/img/intro-bg2.jpg" %})">
+    <div class="overlay-itro"></div>
+    <div class="intro-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <!--<p class="display-6 color-d">Hello, world!</p>-->
+          <h1 class="intro-title mb-4">We are Dancei Music Studio</h1>
+          <p class="intro-subtitle"><span class="text-slider-items">Ballet,Kpop,Jazz Dance,Gymnastic,Harp,Piano,Violin,Guitar,Flute,Voice,Khim,Thai Classical Dance</span><strong class="text-slider"></strong></p>
+          <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div><!-- End Intro Section -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">ABOUT US</h3>
+              <p class="subtitle-a">
+                Enjoy With Me To Be The Star
+                "สานฝันปันสุข ทุกจินตนาการ"
+              </p>
+              <div class="line-mf"></div>
+            </div>
+           </div>
+            <div class="box-shadow-full">
+              <div class="row">
+                    <p class="lead" style="text-align: center">
+                      เพิ่มเติม สถาบัน Dancei Music Studio ก่อตั้งโดย คุณชรีย์รัศมิ์ โพธิศรัทธา (ครูอัญ )ปริญญาบัณฑิตศิลปกรรม จุฬาฯ และ วิทยาลัยนาฏศิลปกรุงเทพฯ
+                      เริ่มเปิดดำเนินงานปี พ.ศ. 2553 โดยมุ่งเน้นคุณภาพในการเรียนการสอน ตั้งแต่จัดหาคุณครูผู้ที่มีคุณวุฒิ และวัยวุฒิ ตามสถาบันต่าง ๆ ทั้งในประเทศและต่างประเทศ
+                    </p>
+                    <p class="lead" style="text-align: center">
+                      โดยทางสถาบันฯ มีห้องสอบบัลเล่ต์ตามมาตรฐาน  Australasian Dance Association (ADA)
+                       ของสถาบันประเทศออสเตรเลีย โดยมีการสอบวัดระดับจากผู้เชี่ยวชาญจากประเทศออสเตรเลีย เป็นประจำทุกปี
+                    </p>
+                  </div>
+
+              </div>
+            </div>
+
+        </div>
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="service" class="services-mf pt-5 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">OUR TEACHER</h3>
+              <p class="subtitle-a">
+                คุณครูของเราในสถาบัน Dancei Music Studio ทางสถาบันได้มีการคัดเลือก
+                คุณครูโดยมุ่งเน้นที่ความสามารถเฉพาะทางและความสามารถในการถ่ายทอดความรู้ให้แก่ผู้เรียนเป็นสำคัญ
+              </p>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+          {% for i in all_author %}
+          <div class="col-md-4">
+            <div class="service-box">
+              <div class="service-ico">
+                <img src="{{ i.author_pic.url }}" alt="" class="ico-circle">
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">{{ i.name  }} {{ i.lastname }} ({{ i.nickname }})</h2>
+                <p class="s-description text-center">{{ i.body }}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Counter Section ======= -->
+    <div class="section-counter paralax-mf bg-image" style="background-image: url({% static "blog/img/counters-bg2.jpg" %})">
+      <div class="overlay-mf"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="ion-android-apps"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter"> {{ all_subject.count }}</p>
+                <span class="counter-text">วิชาที่เปิดสอน</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="ion-music-note"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter">6</p>
+                <span class="counter-text">ห้องเรียน</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="ion-ios-people"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter">{{ all_author.count }}</p>
+                <span class="counter-text">คุณครูในสถาบัน</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-lg-3">
+            <div class="counter-box pt-4 pt-md-0">
+              <div class="counter-ico">
+                <span class="ico-circle"><i class="ion-android-document"></i></span>
+              </div>
+              <div class="counter-num">
+                <p class="counter">{{ all_posts.count }}</p>
+                <span class="counter-text">บทความของเรา</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Counter Section -->
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="work" class="portfolio-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">Subject</h3>
+              <p class="subtitle-a">
+                วิชาที่เปิดสอนในสถาบัน Dancei Music Studio สามารถคลิกเพื่อเข้าไปดูรายละเอียดวิชาต่างๆที่เปิดสอนได้
+                  หรือติดต่อเข้ามาที่สถาบันเพื่อสอบถามข้อมูลเพิ่มเติมได้
+              </p>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+        {% for i in all_subject %}
+          <div class="col-md-4">
+            <div class="work-box">
+              <a href="{{ i.subject_pic.url }}" data-gall="portfolioGallery" class="venobox">
+                <div class="work-img">
+                  <img src="{{ i.subject_pic.url }}" alt="" class="img-fluid">
+                </div>
+              </a>
+              <div class="work-content">
+                <div class="row">
+                  <div class="col-sm-8">
+                    <h2 class="w-title">{{ i.name }}</h2>
+                    <div class="w-more">
+                      <span class="ion-ios-calendar-outline">{{ i.date_updated }}</span>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="w-like">
+                      <img src="{% static "blog/img/favicon2.png" %}">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Testimonials Section ======= -->
+    <div class="testimonials paralax-mf bg-image" style="background-image: url({% static "blog/img/overlay-bg3.jpg" %})">
+      <div class="overlay-mf"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="testimonial-mf" class="owl-carousel owl-theme">
+
+              {% for i in all_review %}
+              <div class="testimonial-box">
+                <div class="author-test">
+                  <img src="{{ i.review_pic.url }}" alt="" class="rounded-circle b-shadow-a" height="200" width="200">
+                  <span class="author">{{i.review_name}}</span>
+                </div>
+                <div class="content-test">
+                  <p class="description lead">{{ i.review_body }}</p>
+                  <span class="comit"><i class="fa fa-quote-right"></i></span>
+                </div>
+              </div>
+              {% endfor %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Testimonials Section -->
+
+    <!-- ======= Blog Section ======= -->
+    <section id="blog" class="blog-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+                Blog
+              </h3>
+              <p class="subtitle-a">
+                บทความ ข่าวสาร ความรู้ และกิจกรรมต่างๆที่มีประโยชน์ที่คุณครูในสถาบัน Dancei Music Studio ช่วยกันเขียนขึ้นมา
+              </p>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            {% for i in all_posts %}
+          <div class="col-md-4">
+            <div class="card card-blog">
+              <div class="card-img">
+                <a href="/blog/{{ i.slug }}"><img src="{{ i.featured_pic.url }}" alt="" class="img-fluid"></a>
+              </div>
+              <div class="card-body">
+                <div class="card-category-box">
+                  <div class="card-category">
+                    <h6 class="category">{{ i.subject.name }}</h6>
+                  </div>
+                </div>
+                <h3 class="card-title"><a href="/blog/{{ i.slug }}">{{ i.title }}</a></h3>
+                <p class="card-description">{{ i.description }}</p>
+              </div>
+              <div class="card-footer">
+                <div class="post-author">
+                  <a href="#">
+                    <img src="{{ i.author.author_pic.url }}" alt="" class="avatar rounded-circle">
+                    <span class="author">{{ i.author.name }} {{ i.author.lastname }}</span>
+                  </a>
+                </div>
+                <div class="post-date">
+                  <span class="ion-ios-calendar-outline"></span> {{ i.date_updated }}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </section><!-- End Blog Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({% static "blog/img/overlay-bg.jpg" %})">
+      <div class="overlay-mf"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="contact-mf">
+              <div id="contact" class="box-shadow-full">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="title-box-2">
+                      <h5 class="title-left">
+                        Send Message Us
+                      </h5>
+                    </div>
+                    <div>
+
+                      <form method="POST" action="{% url 'contact' %}">
+                        {% csrf_token %}
+                          <div class="form-group">
+                        {{ form.as_p }}
+                          </div>
+                          <div class="col-md-12 text-center">
+                            <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
+                          </div>
+                      </form>
+
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="title-box-2 pt-4 pt-md-0">
+                      <h5 class="title-left">
+                        Contact Us
+                      </h5>
+                    </div>
+                    <div class="more-info">
+
+                      <ul class="list-ico">
+                        <li><span class="ion-ios-location"></span> E201 ชั้น 2 โซน E ตลาดบองมาเช่ ถนนเทศบาลสงเคราะห์ แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900</li>
+                        <li><span class="ion-ios-telephone"></span> (084) 044-4155</li>
+                        <li><span class="ion-email"></span> danceimu@gmail.com</li>
+                      </ul>
+                    </div>
+                    <div class="socials">
+                      <ul>
+                        <li><a href="https://www.facebook.com/DanceiDanceSchool/"><span class="ico-circle"><i class="ion-social-facebook"></i></span> </a></li>
+                        <li><a href="https://www.instagram.com/invites/contact/?i=zli561x52ht9&utm_content=1xwzd4t"><span class="ico-circle"><i class="ion-social-instagram"></i></span></a></li>
+                        <li><a href="https://youtube.com/channel/UC5RbYzYnRG4RPa1XzDLFsMg"><span class="ico-circle"><i class="ion-social-youtube"></i></span></a></li>
+                        <li><a href=""><span class="ico-circle"><i class="ion-pizza"></i></span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+
+{% endblock %}

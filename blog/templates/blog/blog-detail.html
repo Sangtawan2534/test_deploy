@@ -1,0 +1,143 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}<title>{{single_post.title}}</title> {% endblock %}
+
+{% block content %}
+
+  <div class="intro intro-single route bg-image" style="background-image: url({{single_post.featured_pic.url}})">
+    <div class="overlay-mf"></div>
+    <div class="intro-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <h2 class="intro-title mb-4">{{ single_post.title }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ {% if single_post %}
+  <main id="main">
+
+    <!-- ======= Blog Single Section ======= -->
+    <section class="blog-wrapper sect-pt4" id="blog">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <div class="post-box">
+              <div class="post-meta">
+                <h1 class="article-title">{{ single_post.title }}</h1>
+                <ul>
+                  <li>
+                    <img src="{{ single_post.author.author_pic.url }}" alt="" class="avatar rounded-circle">
+                    <a href="#">{{single_post.author.name}} {{single_post.author.lastname}} </a>
+                  </li>
+
+                  <li>
+                    <span class="ion-calendar"></span>
+                    <a href="#">{{single_post.date_updated}}</a>
+                  </li>
+                </ul>
+              </div>
+
+                <div class="post-thumb">
+                  <img src="{{ single_post.featured_pic.url }}" class="img-fluid" alt="{{ single_post.title }}">
+                </div>
+                <br>
+               <div class="article-content">
+
+                <blockquote class="blockquote">
+                  <p class="mb-0">{{single_post.description}}</p>
+                </blockquote>
+                  <p> {{single_post.body | safe}} </p>
+
+              </div>
+            </div>
+
+
+          </div>
+          <div class="col-md-4">
+            <div class="widget-sidebar sidebar-search">
+              <h5 class="sidebar-title">Search</h5>
+              <div class="sidebar-content">
+
+                <form action="{% url 'search' %}">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for..."name="search">
+                    <span class="input-group-btn">
+                      <button class="btn btn-secondary btn-search" type="submit" onclick="{% url 'search' %}">
+                        <span class="ion-android-search"></span>
+                      </button>
+                    </span>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="widget-sidebar">
+              <h5 class="sidebar-title">Recent Post</h5>
+              <p class="subtitle-a">
+                บทความอื่นๆที่อยู่ในหมวดของ "{{ single_post.subject }}"
+              </p>
+              <div class="sidebar-content">
+                <ul class="list-sidebar">
+
+                  {% for i in all_post %}
+                      {% if i.subject == single_post.subject %}
+                  <li>
+                    <a href="/blog/{{ i.slug }}"> {{ i.title }} </a>
+                  </li>
+                      {% endif %}
+                  {% endfor %}
+
+                </ul>
+              </div>
+            </div>
+
+            <div class="widget-sidebar">
+              <h5 class="sidebar-title">Author</h5>
+             <p class="subtitle-a">
+                บทความอื่นๆที่เขียนโดย "{{ single_post.author.name }} {{ single_post.author.lastname }}"
+              </p>
+              <div class="sidebar-content">
+                <ul class="list-sidebar">
+
+                  {% for i in all_post %}
+                      {% if i.author == single_post.author %}
+                  <li>
+                    <a href="/blog/{{ i.slug }}"> {{ i.title }} </a>
+                  </li>
+                      {% endif %}
+                  {% endfor %}
+
+                </ul>
+              </div>
+            </div>
+            <div class="widget-sidebar widget-tags">
+              <h5 class="sidebar-title">Tags</h5>
+              <div class="sidebar-content">
+                <ul>
+
+                  {% for i in all_subject %}
+                  <li>
+                 <a href="{% url 'search' %}">
+
+
+                    {{ i.name }}
+
+                 </a>
+
+                  </li>
+                  {% endfor %}
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Blog Single Section -->
+
+  </main><!-- End #main -->
+
+{% endif %}
+{% endblock %}
